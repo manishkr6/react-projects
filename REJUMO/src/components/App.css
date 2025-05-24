@@ -1,0 +1,35 @@
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .custom-file-input-container {
+    margin: 20px 0;
+  }
+  
+  .custom-file-label {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-file-label:hover {
+    background-color: #0056b3;
+  }
+  
+  input {
+    margin: 5px;
+    padding: 5px;
+  }
+  
+  
+  
+  canvas {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
