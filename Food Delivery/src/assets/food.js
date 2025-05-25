@@ -30,7 +30,7 @@ export const food_items = [
   {
     id: 1,
     food_name: "Pancakes",
-    food_category: "breakfast",
+    food_category: "Breakfast",
     food_type: "veg",
     food_quantity: 1,
     food_image: Pancakes,
@@ -246,7 +246,7 @@ export const food_items = [
   {
     id: 25,
     food_name: "Omelette & Toast",
-    food_category: "breakfast",
+    food_category: "Breakfast",
     food_type: "non-veg",
     food_quantity: 1,
     food_image: Omelette_Toast,
@@ -255,7 +255,7 @@ export const food_items = [
   {
     id: 26,
     food_name: "Aloo Paratha",
-    food_category: "breakfast",
+    food_category: "Breakfast",
     food_type: "veg",
     food_quantity: 1,
     food_image: Aloo_Paratha,

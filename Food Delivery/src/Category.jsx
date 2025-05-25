@@ -20,12 +20,12 @@ const Categories = [
   },
   {
     id: 3,
-    name: "Soups",
+    name: "soups",
     icon: <TbSoup className="w-[40px] h-[40px] text-green-600" />,
   },
   {
     id: 4,
-    name: "Pasta",
+    name: "pasta",
     icon: <CiBowlNoodles className="w-[40px] h-[40px] text-green-600" />,
   },
   {
@@ -35,12 +35,12 @@ const Categories = [
   },
   {
     id: 6,
-    name: "Pizza",
+    name: "pizza",
     icon: <GiFullPizza className="w-[40px] h-[40px] text-green-600" />,
   },
   {
     id: 7,
-    name: "Burger",
+    name: "burger",
     icon: <GiHamburger className="w-[40px] h-[40px] text-green-600" />,
   },
 ];
