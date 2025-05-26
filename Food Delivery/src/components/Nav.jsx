@@ -6,9 +6,11 @@ import {
 } from "react-icons/io5";
 import { dataContext } from "../context/UserContext";
 import { food_items } from "../assets/food";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
-  let { input, setInput, setCate } = useContext(dataContext);
+  let { input, setInput, setCate, showCart, setShowCart } =
+    useContext(dataContext);
 
   useEffect(() => {
     let newList = food_items.filter(
@@ -19,6 +21,9 @@ const Nav = () => {
     );
     setCate(newList);
   }, [input]);
+
+   let items = useSelector((state) => state.cart);
+   console.log(items)
 
   return (
     <div className="w-full h-[100px] flex justify-between px-5 md:px-8">
@@ -40,10 +45,15 @@ const Nav = () => {
         />
       </form>
 
-      <div className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-xl relative cursor-pointer">
+      <div
+        className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-xl relative cursor-pointer"
+        onClick={() => {
+          setShowCart(true);
+        }}
+      >
         <IoBagHandleOutline className="w-[30px] h-[30px] text-green-500" />
         <span className="absolute top-1 right-2 text-green-500 font-semibold text-[15px]">
-          1
+          {items.length}
         </span>
       </div>
     </div>

@@ -4,9 +4,12 @@ import Categories from "../Category";
 import Card from "../components/Card";
 import { food_items } from "../assets/food";
 import { dataContext } from "../context/UserContext";
+import { RxCross2 } from "react-icons/rx";
+import CartCard from "../components/CartCard";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  let { cate, setCate, input } = useContext(dataContext);
+  let { cate, setCate, input, showCart, setShowCart } = useContext(dataContext);
 
   const filter = (Categories) => {
     if (Categories === "All") {
@@ -18,6 +21,8 @@ const Home = () => {
       setCate(newList);
     }
   };
+
+  let items = useSelector((state) => state.cart);
 
   return (
     <div className="bg-slate-200 w-full min-h-screen p-3">
@@ -49,6 +54,35 @@ const Home = () => {
             type={item.food_type}
           />
         ))}
+      </div>
+
+      <div
+        className={`w-full md:w-10/12 h-full fixed top-0 right-0 bg-white shadow-xl p-6 transition-all duration-600 overflow-y-auto ${
+          showCart ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <header className="w-full flex justify-between items-center">
+          <span className="text-2xl font-semibold text-gray-600">
+            Order Items
+          </span>
+          <span className="text-2xl cursor-pointer">
+            <RxCross2
+              className="transform rotate-90 transition-transform duration-300 hover:rotate-180"
+              onClick={() => setShowCart(false)}
+            />
+          </span>
+        </header>
+        <div className="w-full flex flex-col gap-3 mt-5">
+          {items.map((item) => (
+            <CartCard
+              name={item.name}
+              price={item.price}
+              image={item.image}
+              id={item.id}
+              qty={item.qty}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -4,13 +4,16 @@ import { food_items } from "../assets/food";
 export const dataContext = createContext();
 
 const UserContext = ({ children }) => {
-  const [cate, setCate] = useState(food_items);
+  let [cate, setCate] = useState(food_items);
   let [input, setInput] = useState("");
+  let [showCart, setShowCart] = useState(false);
   let data = {
     input,
     setInput,
     cate,
     setCate,
+    showCart,
+    setShowCart,
   };
   return (
     <div>
