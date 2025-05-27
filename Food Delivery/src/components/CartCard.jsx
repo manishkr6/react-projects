@@ -1,8 +1,8 @@
 import React from "react";
-import Pancakes from "../assets/Pancakes.jpg";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
-import { RemoveItem } from "../redux/cartSlice";
+import { DecrementQty, IncrementQty, RemoveItem } from "../redux/cartSlice";
+import { toast } from "react-toastify";
 
 const CartCard = ({ name, id, price, image, qty }) => {
   let dispatch = useDispatch();
@@ -18,13 +18,19 @@ const CartCard = ({ name, id, price, image, qty }) => {
         <div className="w-[40%] h-full flex flex-col relative overflow-hidden">
           <div className="text-lg text-gray-600 font-semibold">{name}</div>
           <div className="w-[90px] h-[40px] flex rounded-lg overflow-hidden shadow-lg border-2 text-xl absolute bottom-2">
-            <button className="w-[30%] h-full bg-white flex justify-center items-center">
+            <button
+              className="w-[30%] h-full bg-white flex justify-center items-center"
+              onClick={() => (qty > 1 ? dispatch(DecrementQty(id)) : null)}
+            >
               -
             </button>
             <span className="w-[40%] h-full bg-slate-200 flex justify-center items-center">
               {qty}
             </span>
-            <button className="w-[30%] h-full bg-white flex justify-center items-center">
+            <button
+              className="w-[30%] h-full bg-white flex justify-center items-center"
+              onClick={() => dispatch(IncrementQty(id))}
+            >
               +
             </button>
           </div>
@@ -36,7 +42,10 @@ const CartCard = ({ name, id, price, image, qty }) => {
         </span>
         <span
           className="cursor-pointer hover:scale-110 transition-transform duration-300"
-          onClick={() => dispatch(RemoveItem(id))}
+          onClick={() => {
+            dispatch(RemoveItem(id));
+            toast.error(`${name} is removed from cart`);
+          }}
         >
           <RiDeleteBinLine className="w-6 h-6 text-red-600" />
         </span>

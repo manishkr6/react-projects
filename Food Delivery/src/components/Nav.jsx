@@ -22,8 +22,8 @@ const Nav = () => {
     setCate(newList);
   }, [input]);
 
-   let items = useSelector((state) => state.cart);
-   console.log(items)
+  let items = useSelector((state) => state.cart);
+  console.log(items);
 
   return (
     <div className="w-full h-[100px] flex justify-between px-5 md:px-8">
